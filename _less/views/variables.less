@@ -1,24 +1,9 @@
 
 
 
-		/*Variables*/
+	
 
 
-	@example-color-gre: #53b91b;
-	@example-color-yel: #fcda1f;
-	@example-color-or: #fbb714;
-	@example-color-bla: #000000;
-
-
-
-	@bbox: blackbox;
-
-
-	@pic: "../images";
-
-	@farbe : color;
-	@eab : "erikalexanderbalonier";
-	@var : "eab";
 
 
 #variables{
@@ -47,12 +32,24 @@
 		}	
 	}
 
+		/*Variables*/
+
+
+	@example-color-gre: #53b91b;
+	@example-color-yel: #fcda1f;
+	@example-color-or: #fbb714;
+	@example-color-bla: #000000;
+
 
 #interpolation{
 	width: 90%;
 	margin-right: auto;
 	margin-left: auto;
 	background-color: @example-color-yel;
+		p{
+			text-align: center;
+			font-weight: bold;
+		}
 		h2{
 			color: @example-color-or;
 			text-align: center;	
@@ -60,9 +57,7 @@
 		h2:hover{
 			color: darken(@example-color-gre, 10%);
 		}
-		p{
-			text-align: center;
-			font-weight: bold;
+		#interpolation-p1{
 		}
 		.@{bbox} {
 			background-color: @example-color-bla;
@@ -78,17 +73,64 @@
 			font-weight: bold;
 			text-align: center;
 		}
-		p{
+		#interpolation-p2{
 			@{farbe}: @example-color-gre;
 
 		}
-		p{
-			content :@@var;
+		#interpolation-p3{
+			content: @@var;
 
 		}
 	}
 	
+			/*Variable Interpolation*/
+	@bbox: blackbox;
 
+
+	@pic: "../images";
 
 	
+	@farbe : color;
+	
+
+	@name : "erikalexanderbalonier";
+	@var : "name";
+
+	
+
+#lazy-loading{
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: lighten(@example-color-yel, 5%);
+	h2{
+		text-align: center;
+		color: lighten(@example-color-bla, 40%);
+	}
+		p{
+			text-align: center;
+		}
+	.test1{
+		width: @testwidth;
+		@realwidth: 30%;
+		background-color: darken(@example-color-gre, 30%);
+		margin-right: auto;
+		margin-left: auto;
+		color : lighten(@example-color-gre, 30%);
+	}
+	.test2{
+		width: @testwidth;
+		background-color: lighten(@example-color-gre, 30%);
+		margin-right: auto;
+		margin-left: auto;
+		color: darken(@example-color-gre, 30%);
+	}
+}
+	
+
+		/* Lazy Loading */
+
+	@testwidth: @realwidth;
+	@realwidth: 40%;
+
 
