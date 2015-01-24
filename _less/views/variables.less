@@ -1,16 +1,94 @@
+
+
+
+		/*Variables*/
+
+
+	@example-color-gre: #53b91b;
+	@example-color-yel: #fcda1f;
+	@example-color-or: #fbb714;
+	@example-color-bla: #000000;
+
+
+
+	@bbox: blackbox;
+
+
+	@pic: "../images";
+
+	@farbe : color;
+	@eab : "erikalexanderbalonier";
+	@var : "eab";
+
+
 #variables{
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
-article{
-	p{
-		color: @example-color;
-		text-align: center;
+	background-color: @example-color-yel;
+	article{
+		h2{
+			color: @example-color-gre;
+			text-align: center;
+			}
+		h2:hover{
+			color: darken(@example-color-gre, 10%)
 		}
-	p{
-		color: @example-color;
+		p{
+			color: @example-color-gre;
+			text-align: center;
+			}
+		p{
+			color: @example-color-gre;
+			}
+		.hover:hover{
+			color: lighten(@example-color-gre, 30%)
+			}
 		}	
 	}
-}
 
-@example-color: #17c9d0;
+
+#interpolation{
+	width: 90%;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: @example-color-yel;
+		h2{
+			color: @example-color-or;
+			text-align: center;	
+		}
+		h2:hover{
+			color: darken(@example-color-gre, 10%);
+		}
+		p{
+			text-align: center;
+			font-weight: bold;
+		}
+		.@{bbox} {
+			background-color: @example-color-bla;
+			color: @example-color-or;
+		}
+		article{
+			background: url("@{pic}/less.png");
+			background-repeat: no-repeat;
+			background-size: 50%;
+			background-position: center;
+			width: 100%;
+			height: 400px;
+			font-weight: bold;
+			text-align: center;
+		}
+		p{
+			@{farbe}: @example-color-gre;
+
+		}
+		p{
+			content :@@var;
+
+		}
+	}
+	
+
+
+	
+
