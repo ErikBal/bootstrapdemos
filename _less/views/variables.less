@@ -1,23 +1,13 @@
-
-
-
-	
-
-
-
-
 #variables{
-	width: 90%;
-	margin-left: auto;
+	width: 50%;
 	margin-right: auto;
-	background-color: @example-color-yel;
-	article{
-		h2{
-			color: @example-color-gre;
-			text-align: center;
-			}
-		h2:hover{
-			color: darken(@example-color-gre, 10%)
+	margin-left: auto;
+	h2{
+		color: @example-color-gre;
+		text-align: center;
+		}
+	h2:hover{
+		color: darken(@example-color-gre, 10%)
 		}
 		p{
 			color: @example-color-gre;
@@ -29,6 +19,7 @@
 		.hover:hover{
 			color: lighten(@example-color-gre, 30%)
 			}
+		pre{
 		}	
 	}
 
@@ -45,7 +36,6 @@
 	width: 90%;
 	margin-right: auto;
 	margin-left: auto;
-	background-color: @example-color-yel;
 		p{
 			text-align: center;
 			font-weight: bold;
@@ -63,6 +53,7 @@
 			background-color: @example-color-bla;
 			color: @example-color-or;
 		}
+		pre{
 		article{
 			background: url("@{pic}/less.png");
 			background-repeat: no-repeat;
@@ -73,6 +64,7 @@
 			font-weight: bold;
 			text-align: center;
 		}
+		
 		#interpolation-p2{
 			@{farbe}: @example-color-gre;
 
@@ -110,7 +102,7 @@
 		p{
 			text-align: center;
 		}
-	.test1{
+	.snippet{
 		width: @testwidth;
 		@realwidth: 30%;
 		background-color: darken(@example-color-gre, 30%);
@@ -118,15 +110,30 @@
 		margin-left: auto;
 		color : lighten(@example-color-gre, 30%);
 	}
-	.test2{
+	.ovalid{
 		width: @testwidth;
 		background-color: lighten(@example-color-gre, 30%);
 		margin-right: auto;
 		margin-left: auto;
 		color: darken(@example-color-gre, 30%);
 	}
+
+	@xyz: 25%;
+	.morevariables{
+			width: @xyz;
+			background-color: green;
+			.morevariables2{
+				@xyz: 30%;
+				background-color: yellow;
+				width: @xyz;
+				@xyz: 35%;
+			}
+
+	}
 }
-	
+
+
+
 
 		/* Lazy Loading */
 
