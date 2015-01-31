@@ -64,7 +64,7 @@
 </pre>
 <br />
 	<p>
-		<bold><code>&:extend</code> attached to selector</bold>, looks like a pseudo-class with selector as a parameter.<br/>
+		<code>&:extend</code> attached to selector, looks like a pseudo-class with selector as a parameter.<br/>
 		You can put multiple extend clauses into a selector, but you have to put the extends at the end of the selector.
 	</p>
 <pre>
