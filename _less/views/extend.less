@@ -1,26 +1,58 @@
 /*Variables*/
-
+/*Colors*/
 @h1color: #d4a72e;
 @h2color: #67c613;
+@comment-color: #4b749f;
+
+/*Mixins*/
+
+/*auto-margin-width*/
+.auto-margin-h(@left: auto, @right: auto, @center: center){
+	margin-left: @left;
+	margin-right: @right;
+	text-align: @center;
+}
+
+.auto-margin-pre(@left: auto, @right: auto, @half: 50%){
+	margin-left: @left;
+	margin-right: @right;
+	width: @half;
+}
+
+.auto-margin-p(@left: auto, @right: auto, @pwidth: 55%){
+	margin-left: @left;
+	margin-right: @right;
+	width: @pwidth;
+}
+
+.fontcolor{
+		color: @example-font-color;
+	}
+
+
+.pre-comment{
+	color: @comment-color;
+	font-weight: bold;
+}
+
+
+
+/*LESS*/
 
 #extend{
-	width: 50%;
-	margin-left: auto;
-	margin-right: auto;
 	h1{
 		color: @h1color;
-		text-align: center;
+		.auto-margin-h();
 	}
 	p{
-
+		.auto-margin-p();
 	}
 	.p1{
  		&:extend(.fontcolor);
  		font-size: 14px;
 	}
 
-	.p2{
-		 &:extend(.fontcolor);
+	.p2:extend(.fontcolor){
  		font-size: 16px;
 	}
 
@@ -28,12 +60,22 @@
  		&:extend(.fontcolor);
  		font-size: 18px;
 	}
+	pre{
+		.auto-margin-pre();
+	}
+	h3{
+		.auto-margin-h();
+	}
+	p{
+		.auto-margin-p();
+	}
+	pre{
+		.auto-margin-pre();
+	}
+
 }
 /*Variables*/
 @example-font-color: #2243d1;
 
 
 
-.fontcolor{
-		color: @example-font-color;
-	}
