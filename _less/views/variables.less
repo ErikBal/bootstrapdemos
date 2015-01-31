@@ -1,13 +1,15 @@
+@h2color: #e94e18;
+
 #variables{
 	width: 50%;
 	margin-right: auto;
 	margin-left: auto;
 	h2{
-		color: @example-color-gre;
+		color: @h2color;
 		text-align: center;
 		}
 	h2:hover{
-		color: darken(@example-color-gre, 10%)
+		color: darken(@h2color, 10%)
 		}
 		p{
 			color: @example-color-gre;
@@ -33,7 +35,7 @@
 
 
 #interpolation{
-	width: 90%;
+	width: 50%;
 	margin-right: auto;
 	margin-left: auto;
 		p{
@@ -41,11 +43,11 @@
 			font-weight: bold;
 		}
 		h2{
-			color: @example-color-or;
+			color: @h2color;
 			text-align: center;	
 		}
 		h2:hover{
-			color: darken(@example-color-gre, 10%);
+			color: darken(@h2color, 20%);
 		}
 		#interpolation-p1{
 		}
@@ -64,9 +66,9 @@
 			font-weight: bold;
 			text-align: center;
 		}
-		
+	}	
 		#interpolation-p2{
-			@{farbe}: @example-color-gre;
+			@{farbe}: @example-color-or;
 
 		}
 		#interpolation-p3{
@@ -90,54 +92,53 @@
 
 	
 
-#lazy-loading{
-	width: 90%;
+
+
+#lazyloading{
+	width: 50%;
 	margin-right: auto;
 	margin-left: auto;
-	background-color: lighten(@example-color-yel, 5%);
+	margin-top: 100px;
 	h2{
 		text-align: center;
-		color: lighten(@example-color-bla, 40%);
+		color: lighten(@h2color, 11%);
 	}
-		p{
-			text-align: center;
-		}
 	.snippet{
-		width: @testwidth;
-		@realwidth: 30%;
 		background-color: darken(@example-color-gre, 30%);
 		margin-right: auto;
 		margin-left: auto;
-		color : lighten(@example-color-gre, 30%);
+		color: lighten(@example-color-gre, 30%);
 	}
 	.ovalid{
-		width: @testwidth;
 		background-color: lighten(@example-color-gre, 30%);
 		margin-right: auto;
 		margin-left: auto;
 		color: darken(@example-color-gre, 30%);
 	}
 
-	@xyz: 25%;
 	.morevariables{
-			width: @xyz;
-			background-color: green;
-			.morevariables2{
-				@xyz: 30%;
-				background-color: yellow;
-				width: @xyz;
-				@xyz: 35%;
-			}
-
 	}
 }
 
 
+#defaultvariables{
+	margin-bottom: 100px;
+	h2{
+		color: @h2color;
+	}
+	.examplecolor{
+	}	
+}
 
 
-		/* Lazy Loading */
-
-	@testwidth: @realwidth;
-	@realwidth: 40%;
-
-
+.next{
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+	a{
+		font-weight: bold;
+		font-size: 20px;
+		color: @h2color;	
+	}
+}
