@@ -227,6 +227,77 @@ article .class,
 	color: blue;
 }
 
-c-class:extend(.b-class){} <span class="pre-comment">//Will not match any selectors above</span>
+c-class:extend(.b-class){} <span class="pre-comment">//Will not match any selector above</span>
+	</pre>
+	<p>
+		<strong>Leading Star</strong> matters. Selectors <code>*a-class</code> and <code>a-class</code> are the same, but <code>&:extend</code> <u>will not match them</u>.
+	</p>
+	<pre>
+*.a-class{
+	color: red;
+}
+
+.b-class:extend(.a-class){} <span class="pre-comment">//Will not match the selector above</span>
+	</pre>
+	<p>
+		<strong>Order of pseudo-classes</strong> matters. Selectors <code>a:hover:visited</code> and <code>a:visited:hover</code> matching the same set of elements, but <code>&:extend</code> <u>treats them as different</u>.
+	</p>
+	<pre>
+a:hover:visited{
+	color: green;
+}
+.a-class:extend(a:visited:hover){} <span class="pre-comment">//Will not match the selectors above</span>
+	</pre>
+	<p>
+		<strong>Nth expression</strong> form matters. Nth-Expressions <code>1n+3</code> and <code>n+3</code> are the same, but <code>&:extend</code> <u>will not match them</u>.
+	</p>
+	<pre>
+:nth-of-type(1n+5) {
+  color: blue;
+}
+.a-class:extend(:nth-of-type(n+5)) {} <span class="pre-comment">//Will not match the nth-expression above</span>
+	</pre>
+	<p>
+		<strong>Quote type</strong> in attribute selector doesn't matter. Every type is the same and <code>&:extend</code> <u>will match them</u>.
+	</p>
+	<pre>
+[title=Example] {
+  color: green;
+}
+[title='Example'] {
+  color: green;
+}
+[title="Example"] {
+  color: green;
+}
+
+.a-class:extend([title=identifier]) {}
+.b-class:extend([title='identifier']) {}
+.c-class:extend([title="identifier"]) {} <span class="pre-comment">//Every quote type matches three times</span>
+	</pre>
+	<p>
+		<strong>Output</strong>
+	</p>
+	<pre>
+[title=Example],
+.a-class,
+.b-class,
+.c-class {
+  color: green;
+}
+
+[title='Example'],
+.a-class,
+.b-class,
+.c-class {
+  color: green;
+}
+
+[title="Example"],
+.a-class,
+.b-class,
+.c-class {
+  color: green;
+}
 	</pre>
 </section>
