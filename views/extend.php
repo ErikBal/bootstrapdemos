@@ -301,3 +301,99 @@ a:hover:visited{
 }
 	</pre>
 </section>
+
+<section id="extend7">
+	<h3>
+		<code>&:extend</code> "all"
+	</h3>
+	<p>
+		If you put "all" last in an extend argument, Less matches that selector as part of another selector.
+		The extending selector duplicates and gets replaced by the extended selector
+	</p>
+	<pre>
+.a.b.test-class,
+.test-class.c{
+	color: purple;
+}
+
+test-class{
+	&:hover{
+		color: pink;
+	}
+}
+replacement-class:extend(.test-class all){} 
+	</pre>
+	<p>
+		<strong>Output</strong>
+	</p>
+	<pre>
+.a.b.test-class,
+.test-class.c,
+.a.b.replacement-class,
+.replacement-class.c{
+	color: purple;
+}
+
+.test-class:hover{
+.replacement-class:hover{
+		color: pink;
+}
+<span class="pre-comment">//Selectors got copied and replaced by .replacement-class. All new Selectors (.replacement-class(es)) <u>also</u> have the color: purple; and :hover color: pink;</span>
+	</pre>
+</section>
+
+
+
+<section id="extend8">
+	<h3>
+		Selector Interpolation with <code>&:extend</code>
+	</h3>
+	<p>
+		<code>&:extend</code> can not match selectors with variables.<br />
+		Example:
+	</p>
+	<pre>
+<span class="pre-comment">Selector with variable will not match:</span>
+
+
+@variable-selector: .a-class;
+@{variable-selector} { 
+	color: yellow;
+}
+
+.b-class:extend(.a-class) {} <span class="pre-comment">// no match found, will not do anything.</span>
+
+
+<span class="pre-comment">extend with variable in target selector will not match either:</span>
+
+
+.a-class{ 
+	color: yellow;
+}
+
+.b-class:extend(@variable-selector) {} <span class="pre-comment">// no match found, will not do anything.</span>
+@variable-selector: .a-class;
+	</pre>
+	<p>
+		Both Versions compile into:
+	</p>
+	<pre>
+.a-class {
+  color: yellow;
+}
+	</pre>
+	<p>
+		Nevertheless, <code>&:extend</code> attached to an interpolated selector <u>works</u>:
+	</p>
+	<pre>
+.a-class{
+	color: green;
+}
+
+@{variable-selector}:extend(.a-class){}
+
+@variable-selector: .b-class;
+	</pre>
+
+
+</section>
