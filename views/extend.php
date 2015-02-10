@@ -302,6 +302,11 @@ a:hover:visited{
 	</pre>
 </section>
 
+
+
+<!--Extend all-->
+
+
 <section id="extend7">
 	<h3>
 		<code>&:extend</code> "all"
@@ -343,6 +348,8 @@ replacement-class:extend(.test-class all){}
 </section>
 
 
+
+<!--Selector Interpolation with Extend-->
 
 <section id="extend8">
 	<h3>
@@ -403,3 +410,32 @@ replacement-class:extend(.test-class all){}
 }
 	</pre>
 </section>
+
+
+
+
+
+<section id="extend9">
+	<h3>
+	</h3>
+	<p>
+	</p>
+	<pre>
+	</pre>
+	<p>
+	</p>
+	<pre>
+	</pre>
+	<p>
+	</p>
+	<pre>
+	</pre>
+	<p>
+	</p>
+	<pre>
+	</pre>
+	<p>
+	</p>
+	<pre>
+	</pre>
+<section>
