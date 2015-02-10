@@ -394,6 +394,12 @@ replacement-class:extend(.test-class all){}
 
 @variable-selector: .b-class;
 	</pre>
-
-
+	<p>
+		Compile to:
+	</p>
+	<pre>
+.a-class, .b-class{
+  color: green;
+}
+	</pre>
 </section>
