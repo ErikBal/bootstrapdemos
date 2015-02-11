@@ -413,29 +413,156 @@ replacement-class:extend(.test-class all){}
 
 
 
-
+<!--Scoping / Extend Inside @media-->
 
 <section id="extend9">
 	<h3>
+		Scoping / <code>&:extend</code> Inside @media
 	</h3>
 	<p>
+		<code>&:extend</code> inside a @media declaration matches selectors only inside the same @media declaration.
+		It will ignore the same selector outside the @media declaration.
 	</p>
 	<pre>
+@media print {
+  .random-class:extend(.selector-a) {} <span class="pre-comment">// extend inside @media declaration</span>
+  .selector-a { <span class="pre-comment">//will be matched -> it is in the same @media declaration</span>
+    color: black;
+  }
+}
+.selector-a { <span class="pre-comment">//extend ignores it. Same class-name but not in the @media declaration.</span>
+  color: red;
+}
+@media screen {
+  .selector-a {  <span class="pre-comment">//extend ignores it. Not in the same @media declaration.</span>
+    color: blue;
+  }
+}
 	</pre>
 	<p>
+		<code>&:extend</code> written inside a @media declaration does not match selectors inside nested declaration:
 	</p>
 	<pre>
+@media screen {
+  .random-class:extend(.selector-a) {} // extend inside media
+  @media (min-width: 1023px) {
+    .selector-a { 
+      color: green;
+    }
+  }
+}
+
+<span class="pre-comment">//Ruleset in another nested @media declaration gets ignored.</span>
 	</pre>
 	<p>
+		Compiles to:
 	</p>
 	<pre>
+@media screen and (min-width: 1023px) {
+  .selector-a { 
+    color: green;
+  }
+}
 	</pre>
 	<p>
+		To match everthing including nested @media declarations, use .topLevel <code>&:extend</code>
 	</p>
 	<pre>
+@media screen {
+	.selector-a {  /* ruleset inside nested media - top level extend works */
+    	color: red;
+  }
+  	@media (min-width: 1023px) {
+    	.selector-a {  /* ruleset inside nested media - top level extend works */
+      		color: red;
+    }
+  }
+}
+
+.topLevel:extend(.selector-a) {} /* top level extend matches everything */
 	</pre>
 	<p>
+		Output:
 	</p>
 	<pre>
+@media screen {
+  .selector-a,
+  .topLevel { /* ruleset inside @media was extended */
+    color: red;
+  }
+}
+@media screen and (min-width: 1023px) {
+  .selector-a,
+  .topLevel { /* ruleset inside nested @media was extended */
+    color: red;
+  }
+}
 	</pre>
 <section>
+
+
+
+<!--Scoping / Extend Inside @media-->
+
+<section id="extend10">
+	<h3>
+		When do you use <code>&:extend</code>
+	</h3>
+	<p>
+		<strong>Classical Use:</strong> Avoiding to add a base class, because you can use <code>&:extend</code>.
+		Before, we would have changed our html and would have made a subtype of our class with values to override the background-color on the basic class (.background-color-color), but now, we just use <code>&:extend</code> with a simplified html. Example:
+	</p>
+	<pre>
+.background-color-color {
+	background-color: black;
+  	color: white;
+}
+
+
+.different-background-color{
+	&:extend(.background-color-color);
+	background-color: green;
+}
+
+
+<span class="pre-comment">We would have used class="background-color-color different-background-color" but now we use .different-background-color and <code>&:extend</code>(different-background-color).
+	</pre>
+	<p>
+		<strong>Reducing CSS Size:</strong> We could use Mixins to move properties to a selector, but this will duplicate unnecessary selectors and properties and we have more css than using <code>&:extend</code>. Example:
+	</p>
+	<pre>
+.my-color-theme {
+  	background-color: green;
+  	color: yellow;
+}
+.class1 {
+  	&:extend(.my-color-theme);
+}
+.class2 {
+  	&:extend(.my-color-theme);
+}		
+	</pre>
+	<p>
+		The CSS Output is smaller than using mixins.
+	</p>
+	<pre>
+.my-color-theme,
+.class1,
+.class2 {
+  	background-color: green;
+  	color: yellow;
+}
+
+<span class="pre-comment">//Instead of the longer Version:</span>
+
+.class1	{
+	background-color: green;
+  	color: yellow;
+}
+
+.class2 {
+  	background-color: green;
+  	color: yellow;
+}
+	</pre>
+</section>
