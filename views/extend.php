@@ -565,4 +565,22 @@ replacement-class:extend(.test-class all){}
   	color: yellow;
 }
 	</pre>
+	<p>
+		<strong>Combining Styles / a more advanced mixin:</strong> You can use an advanced mixin to relate and apply the same styles to two blocks of html. Mixins can only work with simple selectors. Therefore we use the advanced mixin to combine them.
+	</p>
+	<pre>
+ul.list > li {
+  	// list styles
+}
+
+button.list-style {
+  	&:extend(li.list > a); // use the same list styles
+}
+	</pre>
+</section>
+
+<section>
+	<h3>
+		<a href="index.php?page=mixins"> Mixins </a>
+	</h3>
 </section>
