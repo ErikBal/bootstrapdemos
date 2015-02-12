@@ -1,0 +1,53 @@
+/*Mixins*/
+
+.pre-comment{
+	color: @comment-color;
+	font-weight: bold;
+}
+
+/*auto-margin-width*/
+
+.auto-margin-h(@left: auto, @right: auto, @center: center){
+	margin-left: @left;
+	margin-right: @right;
+	text-align: @center;
+}
+
+.auto-margin-pre(@left: auto, @right: auto, @half: 50%){
+	margin-left: @left;
+	margin-right: @right;
+	width: @half;
+}
+
+.auto-margin-p(@left: auto, @right: auto, @pwidth: 55%){
+	margin-left: @left;
+	margin-right: @right;
+	width: @pwidth;
+}
+
+
+#mixin1{
+	h2{
+		.auto-margin-h();
+	}
+	p{
+		.auto-margin-p();
+	}
+	pre{
+		.auto-margin-pre();
+	}
+
+}
+
+
+#mixin2{
+	h3{
+		.auto-margin-h();
+	}
+	p{
+		.auto-margin-p();
+	}
+	pre{
+		.auto-margin-pre();
+	}
+}
