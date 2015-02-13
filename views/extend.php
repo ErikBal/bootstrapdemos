@@ -498,11 +498,11 @@ replacement-class:extend(.test-class all){}
   }
 }
 	</pre>
-<section>
+</section>
 
 
 
-<!--Scoping / Extend Inside @media-->
+<!--When do you use &:extend-->
 
 <section id="extend10">
 	<h3>
@@ -579,7 +579,10 @@ button.list-style {
 	</pre>
 </section>
 
-<section>
+
+
+
+<section id="extend11">
 	<h3>
 		<a href="index.php?page=mixins"> Mixins </a>
 	</h3>
